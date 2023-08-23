@@ -2,20 +2,21 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+int print_char(va_list argu);
+int print_string(va_list argu);
+
 typedef struct main
 {
     char symbols;
-    void(*f)(va_list argu);
+    int(*f)(va_list argu);
 }fun;
 
-void print_symbole(va_list argu);
-void print_char(va_list argu);
-void print_int(va_list argu);
-void print_float(va_list argu);
-void print_string(va_list argu);
+    fun print[] = {
+        {'s', &print_string},
+        {'c', &print_char}
+    };
 
-int _putchar(char c);
-int _printf(const char *format, ...);
+fun *p = print;
 
 
 #endif

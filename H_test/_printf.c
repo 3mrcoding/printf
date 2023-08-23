@@ -11,9 +11,20 @@
  */
 
 
-void is_incude(va_list argu)
+void is_incude(const char *format, int i, fun *p)
 {
-
+    int j;
+    for (j = 0; print[j].symbols != '\0'; j++)
+    {
+        if (format[i + 1] == print[j].symbols)
+        {
+            print[j].f;
+        }
+        else
+        {
+            return;
+        }
+    }
 }
 
 /**
@@ -39,28 +50,37 @@ int print_char(va_list argu)
  *       the string to be printed.
  */
 
-void print_string(va_list argu)
+int print_string(va_list argu)
 {
     int coun;
 	char *s;
 	s = va_arg(argu, char*);
 	int len = strlen(s);
-    coun == write(STDOUT_FILENO, s, len);
+    coun = write(STDOUT_FILENO, s, len);
     return (coun);
 }
 
 int _printf(const char *format, ...)
 {
-
     va_list args;
-
+    int i;
+    const char *c;
 
     va_start(args, format);
-    fun print[] = {
-        {'c', print_char},
-        {'s', print_string}
-    };
 
+    int len = strlen(format);
+    for (i = 0; i < len; i++)
+    {
+        if (format[i] == '%')
+        {
+            
+        }
+        else
+        {
+            c = &format[i];
+            write(STDOUT_FILENO, c, 1);
+        }
+    }
     va_end(args);
 
 }
