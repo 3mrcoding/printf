@@ -10,22 +10,34 @@
  * Return: no. of printed bytes
 */
 
-int print_unmber (va_list argu)
+int print_number(va_list argu)
 {
 	int num = va_arg(argu, int);
-	int i, j, divisor, digit, digits = 0;
-	int temp = num;
+	int i, j, temp, divisor, digit, digits = 0;
+	int is_negative = 0, coun = 0;
+	char arr[20];
 
+	if (num < 0)
+	{
+		is_negative = 1;
+		num = -num;
+	}
+temp = num;
 	while (temp != 0)
 	{
 		digits++;
 		temp /= 10;
 	}
-	char arr[digits + 1];
-	arr[digits] = '\0';
+	arr[digits + 1] = '\0';
+	if (is_negative)
+	{
+		arr[0] = '-';
+		j = 1;
+	}
+	else
+		j = 0;
 	while (digits > 0)
 	{
-		j = 0;
 		divisor = 1;
 		for (i = 0; i < digits - 1; i++)
 		{
@@ -35,7 +47,8 @@ int print_unmber (va_list argu)
 		num %= divisor;
 		digits--;
 		arr[j] = digit + '0';
-		write(STDOUT_FILENO, &arr[j], 1);
 		j++;
 	}
+	coun = write(STDOUT_FILENO, arr, j);
+	return (coun);
 }
