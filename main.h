@@ -16,5 +16,6 @@ int print_char(va_list argu);
 int print_string(va_list argu);
 int is_include(const char *format, int i, fun print[], va_list args);
 int _printf(const char *format, ...);
+int print_number (va_list argu);
 
 #endif

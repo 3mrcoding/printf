@@ -19,7 +19,9 @@ int _printf(const char *format, ...)
 
 	fun print[] = {
 		{'s', &print_string},
-		{'c', &print_char}
+		{'c', &print_char},
+		{'d', &print_number},
+		{'i', &print_number}
 	};
 
 	va_start(args, format);

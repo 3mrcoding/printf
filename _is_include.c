@@ -23,7 +23,7 @@ int is_include(const char *format, int i, fun print[], va_list args)
 		st = +write(STDOUT_FILENO, &c, 1);
 	}
 
-	for (j = 0; j < 2; j++)
+	for (j = 0; j < 4; j++)
 	{
 		if (format[i + 1] == print[j].symbols)
 		{
